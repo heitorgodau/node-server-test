@@ -1,6 +1,11 @@
 <h1>About</h1>
-<p>Essa é a página de About de {{banana}}</p>
-  {{#each listas}}
+{{#if name}}
+  <p>This page is about <strong>{{name}}</strong></p>
+{{/if}}
+{{#unless name}}
+  <p>This page is about <strong>nobody</strong></p>
+{{/unless}}
+  {{#each lists}}
 <ul>
   <li>{{item1}}</li>
   <li>{{item2}}</li>
@@ -9,4 +14,11 @@
   {{/if}}
 </ul>
 {{/each}}
+<br><br>
+<form action="/about/contact" method="get">
+<label> Try send your name:</label>
+  <input type="text" name="name">
+  <button type="submit">Send</button>
+</form>
+<br><br>
 <a href="/">Return</a>

@@ -1,53 +1,36 @@
 const express = require('express');
 const path = require('path');
+const data = require('./data');
 
 const app = express();
 
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'hbs');
 
-const list = {
-  item1: 'Maça',
-  item2: 'banana',
-  item3: 'morango',
-};
-
-const list2 = {
-  item1: 'martelo',
-  item2: 'chave de fenda',
-  // item3: 'marreta',
-};
-
-const list3 = {
-  item1: 'ouro',
-  item2: 'prata',
-  item3: 'bronze',
-};
-
-const arr = [list, list2, list3];
-
 app.get('/', (req, res) => {
   res.render('home');
 });
 
 app.get('/about', (req, res) => {
-  res.render('about', { listas: arr });
+  res.render('about', { lists: data });
 });
 
 app.get('/about/contact', (req, res) => {
-  const name = req.query.user;
+  const { name } = req.query;
   res.render('contact', { name });
 });
 
-// app.get('/about/:user', (request, res) => {
-//   const name = request.params.user;
-//   res.render('about', { name });
-// });
-
-
-app.get('/about/:banana', (request, res) => {
-  const { banana } = request.params;
-  res.render('about', { banana });
+app.get('/about/:name', (req, res) => {
+  const { name } = request.params;
+  res.render('about', { name });
 });
+
+app.get('/character', (req, res) => {
+  res.render('character');
+});
+
+app.post('/character/file', (req, res) => {
+  
+})
 
 app.listen(3000);
