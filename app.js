@@ -1,8 +1,11 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
 const data = require('./data');
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'hbs');
@@ -21,7 +24,7 @@ app.get('/about/contact', (req, res) => {
 });
 
 app.get('/about/:name', (req, res) => {
-  const { name } = request.params;
+  const { name } = req.params;
   res.render('about', { name });
 });
 
@@ -30,7 +33,8 @@ app.get('/character', (req, res) => {
 });
 
 app.post('/character/file', (req, res) => {
-  
-})
+  const { name, warYells, charClass } = req.body;
+  res.render('character-file', { name, warYells, charClass });
+});
 
 app.listen(3000);

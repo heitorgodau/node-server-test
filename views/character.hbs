@@ -1,12 +1,15 @@
-<form action="/about/my-info" method="post">
-  <label>Your name here:<input type="text" name="name"></label>
-  <label>Your war crying:<input type="text" name="warcrying"></label>
+<h1>Form to make a very simple character</h1>
+<h3>Fill this form:</h3>
+<form action="/character/file" method="post">
+  <label>Your name here:<input type="text" name="name"></label><br><br>
+  <label>Your war crying:<input type="text" name="warYells"></label><br><br>
   <label>Your class:
-    <select name="class">
+    <select name="charClass">
       <option value="barbarian">Barbarian</option>
       <option value="cleric">Cleric</option>
       <option value="ranger">Ranger</option>
       <option value="rogue">Rogue</option>
     </select>
-  </label>
+  </label><br><br>
+  <button type="submit">Send</button>
 </form>
